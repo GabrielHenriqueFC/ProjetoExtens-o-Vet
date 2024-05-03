@@ -1,0 +1,83 @@
+.cabeca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.menu{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.principal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    width: 100%;
+    height: 100vh;
+    
+}
+.aba{
+    background-color: #999;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px 10px 0px 0px;
+    cursor: pointer;
+    margin-right: 3px;
+}
+.abaSelecionada{
+    background-color: #248 !important;
+}
+
+.if_principal{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+.btn_geral{
+    background-color: #248;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+/* Novo.css*/
+#novo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.elementosForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 80%;
+    margin-top: 20px;
+    
+}
+.botoesForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.campoForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+    
+}
+.campoForm input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
