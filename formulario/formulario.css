@@ -1,0 +1,49 @@
+#novo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.elementosForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin-top: 20px;
+    
+    
+}
+.botoesForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.campoForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    
+}
+.campoForm input{
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.btn_geral{
+    background-color: grey;
+    color: black;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+#frame{
+    height: 15vw;
+    width: 50vw;
+}

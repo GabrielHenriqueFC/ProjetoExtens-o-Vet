@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="formulario.css">
+
+</head>
+<body id="novo">
+    <div class="elementosForm">
+        <div class="campoForm">
+            <label class="label">Nome</label>
+            <input type="text" name="f_nome" id="f_nome" placeholder="Thiago junior" required="required">
+        </div>
+        <div class="campoForm">
+            <label class="label">Celular</label>
+            <input type="tel" name="f_celular" id="f_celular" placeholder="(83) 90000-0000" required="required">
+        </div>
+        <div class="campoForm">
+            <label class="label">E_mail</label>
+            <input type="email" name="f_email" id="f_email" placeholder="email@gmail.com" required="required">
+        </div>
+        <div class="campoForm">
+            <label class="label">Data de nascimento</label>
+            <input type="date" name="f_dtnasc" id="f_dtnasc" required="required">
+        </div>
+        <div class="botoesForm">
+            <button type="submit" class="btn_geral" onclick="Enviar();" value="Enviar">Marcar</button>
+    
+            <button class="btn_geral" onclick="Limpar();">Limpar</button>
+    
+        </div>
+    </div>
+
+    <iframe id="frame" src="visualizar_lista.html" frameborder="1"></iframe>
+    <button id="limpar_storage" class="btn_geral" onclick="Apagar_Storage();">Apagar</button>
+
+   <script src="formulario.js"></script>
+</body>
+</html>
