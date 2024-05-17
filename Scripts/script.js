@@ -3,6 +3,8 @@ const btn = document.querySelectorAll('button');
 let txtSlide = document.querySelector('#txt-slideInfo');
 const section = document.querySelector('.clinica');
 const items = document.querySelectorAll('.info');
+const divHome = document.querySelector('.menu-m3');
+const infoSection = document.querySelector('.clinica');
 
 let slideIndex = 0;
 
@@ -49,4 +51,20 @@ const observer = new IntersectionObserver(animateElements, {
 
 items.forEach(item => {
     observer.observe(item);
-  });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const loginDiv = document.querySelector('.header-acount');
+
+    loginDiv.addEventListener('click', () => {
+        window.location.href = 'login.html'; 
+    });
+});
+
+
+divHome.addEventListener('click', ()=> {
+    window.scrollTo({top:infoSection.offsetTop, behavior:'smooth'})
+})
+

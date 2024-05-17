@@ -58,7 +58,19 @@ header h1 > a{
     transition: all .2s ease;
 }
 
+.menu-m3 {
+    cursor: pointer;
+    padding: 3vh 2.2vw;
+    font-size: 1.3rem;
+    transition: all .2s ease;
+}
+
 .menu:hover {
+    border-bottom: .5px solid #00C4B4;
+    color: #00C4B4;
+}
+
+.menu-m3:hover {
     border-bottom: .5px solid #00C4B4;
     color: #00C4B4;
 }
@@ -127,7 +139,6 @@ header h1 > a{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to top,#00C4B4, #fff);
     margin-top: 2px;
 }
 
@@ -180,7 +191,7 @@ header h1 > a{
 .ideia {
     height: 15vh;
     width: 100vw;
-    background-color: #00C4B4;
+    background-color: #00c4b4be;
     color:  #303030;
     display: flex;
     align-items: center;
