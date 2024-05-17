@@ -1,0 +1,105 @@
+/* Define a paleta de cores */
+:root {
+    --primary-color: #4CAF50; /* Verde claro */
+    --secondary-color: #FFEB3B; /* Amarelo claro */
+    --background-color: #F0F8FF; /* Alice Blue */
+    --text-color: #333; /* Texto escuro */
+    --accent-color: #FF5722; /* Laranja */
+}
+
+/* Estilos globais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Estilos dos formulários e selects */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+select, input[type="text"], input[type="date"], input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Lista de agendamentos */
+#lista-agendamentos {
+    list-style-type: none;
+    padding: 0;
+}
+
+#lista-agendamentos li {
+    background-color: white;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lista-agendamentos li button {
+    background-color: var(--accent-color);
+}
+
+#lista-agendamentos li button:hover {
+    background-color: var(--primary-color);
+}
+
+
+
+/* Estilos adicionais para a aparência */
+h2 {
+    color: var(--primary-color);
+}
+
+.container h2 {
+    margin-top: 0;
+}
