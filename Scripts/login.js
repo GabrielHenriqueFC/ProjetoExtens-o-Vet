@@ -8,3 +8,8 @@ toggle = () => {
 setTimeout(() => {
 	container.classList.add('sign-in')
 }, 200)
+
+
+function entrar() {
+    window.location.href = 'home.html'
+}
