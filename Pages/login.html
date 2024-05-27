@@ -18,21 +18,21 @@
 					<div class="form sign-up">
 						<div class="input-group">
 							<i class='fa fa-user'></i>
-							<input type="text" placeholder="Usuário">
+							<input type="text" placeholder="Usuário" id="user">
 						</div>
 						<div class="input-group">
 							<i class='fa fa-envelope'></i>
-							<input type="email" placeholder="E-mail">
+							<input type="email" placeholder="E-mail" id="email">
 						</div>
 						<div class="input-group">
 							<i class='fa fa-lock'></i>
-							<input type="password" placeholder="Senha">
+							<input type="password" placeholder="Senha" id="senha">
 						</div>
 						<div class="input-group">
 							<i class='fa fa-lock'></i>
-							<input type="password" placeholder="Confirme sua Senha">
+							<input type="password" placeholder="Confirme sua Senha" id="senha-confirm">
 						</div>
-						<button>
+						<button onclick="Enviar()">
 							Criar Conta
 						</button>
 						<p>
@@ -55,13 +55,13 @@
 					<div class="form sign-in">
 						<div class="input-group">
 							<i class='fa fa-user'></i>
-							<input type="text" placeholder="Usuário">
+							<input type="email" placeholder="Email" id="loginEmail">
 						</div>
 						<div class="input-group">
 							<i class='fa fa-lock'></i>
-							<input type="password" placeholder="Senha">
+							<input type="password" placeholder="Senha" id="loginSenha">
 						</div>
-						<button onclick="entrar()">
+						<button onclick="Login()">
 							Entrar
 						</button>
 						<p>
