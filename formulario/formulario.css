@@ -4,6 +4,12 @@
     justify-content: flex-start;
     align-items: center;
 }
+.formBody{
+    padding: 20px;
+    border:3.5px, solid, rgb(240, 97, 97);
+    border-radius: 8px;
+    background-color: #FF9A6C;
+}
 .elementosForm{
     display: flex;
     flex-direction: column;
@@ -11,7 +17,7 @@
     align-items: center;
     width: 80%;
     margin-top: 20px;
-    
+    margin-left: 10%;
     
 }
 .botoesForm{
@@ -46,4 +52,13 @@
 #frame{
     height: 15vw;
     width: 50vw;
+}
+body{
+    background-image: url('https://www.pikpng.com/pngl/b/570-5703323_footer-png.png');
+    background-size: 101% 100%;
+    background-color: #c59a87;
+    background-repeat: no-repeat;
+}
+#frame {
+    background-color: white;
 }
