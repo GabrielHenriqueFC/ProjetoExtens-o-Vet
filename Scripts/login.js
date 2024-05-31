@@ -7,6 +7,48 @@ let container = document.getElementById('container')
 var indice;
 
 
+
+var usuariolog = {
+    user1 : {
+        nome: '',
+        email: '',
+        pets: [
+            {
+                nome: '',
+                idade: 0,
+                raça: '',
+                porte: '',
+            }
+        ]
+    },
+    user2 : {
+        nome: 'fulano',
+        email: 'fulano@gmail.com',
+        pets: [
+            {
+                nome: 'toto',
+                idade: 4,
+                raça: 'pastor alemão',
+                porte: 'grande',
+            }
+        ]
+    },
+    user3 : {
+        nome: 'fulano',
+        email: 'fulano@gmail.com',
+        pets: [
+            {
+                nome: 'toto',
+                idade: 4,
+                raça: 'pastor alemão',
+                porte: 'grande',
+            }
+        ]
+    }
+}
+
+
+
 //cadastro js
 function Enviar() {
     var cadastro = {};
@@ -54,7 +96,7 @@ function Login() {
         if (item.email === loginEmail && item.senha === loginSenha) {
             alert('Login bem-sucedido! Bem-vindo, ' + item.nome + '!');
             loginSuccess = true;
-			location.href = 'home.html';
+			location.href = 'homelog.html';
             break;
         }
     }
