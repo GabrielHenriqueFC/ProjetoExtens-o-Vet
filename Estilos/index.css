@@ -83,6 +83,12 @@ h2 {
     cursor: pointer;
 }
 
+#add-pet-button {
+    position: absolute;
+    left: 50%;
+    top: 23%;
+}
+
 .botao-transparente {
     background-color: transparent;
     color: #FF725E;

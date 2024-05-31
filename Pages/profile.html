@@ -26,10 +26,10 @@
             <h1>Perfil do Usuário</h1>
             <div class="card card-usuario">
                 <h2>Informações do Usuário</h2>
-                <p><strong>Nome:</strong> João da Silva</p>
-                <p><strong>Email:</strong> joao.silva@example.com</p>
-                <p><strong>Número:</strong> (xx) xxxxx-xxxx</p>
-                <button id="add-pet-button" class="botaoPrincipal">Cadastrar Pet</button>
+                <p><strong>Nome:</strong> <span id="user-name"></span></p>
+                <p><strong>Email:</strong> <span id="user-email"></span></p>
+                <p><strong>Número:</strong> <span id="user-phone">N/A</span></p> <!-- Adicionei este campo -->
+                <button id="add-pet-button" class="botao">Cadastrar Pet</button>
             </div>
 
             <div id="pets-container">
@@ -93,6 +93,6 @@
         </div>
     </footer>
 
-    <script src="../Scripts/perfilscript.js"></script>
-</body>
+    <script src="../Scripts/script.js"></script>
+    <script src="../Scripts/perfilscript.js"></script> 
 </html>

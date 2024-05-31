@@ -1,3 +1,19 @@
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const userId = localStorage.getItem('loggedInUserId');
+    if (userId !== null) {
+        const user = JSON.parse(localStorage.getItem(userId));
+        if (user !== null) {
+            document.getElementById('user-name').textContent = user.nome;
+            document.getElementById('user-email').textContent = user.email;
+            // Se houver um campo de número, adicione o valor correspondente
+            // document.getElementById('user-phone').textContent = user.numero || 'N/A';
+        }
+    }
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const addPetButton = document.getElementById('add-pet-button');
     const petFormContainer = document.getElementById('pet-form-container');
