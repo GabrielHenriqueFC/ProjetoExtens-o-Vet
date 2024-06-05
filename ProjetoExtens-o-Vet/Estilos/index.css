@@ -1,0 +1,288 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #263138;
+}
+
+header { 
+    background-color: #FF9A6C;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+header .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: linear-gradient(to bottom,  #fc1f02 50%,#FF725E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header nav a {
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 32px;
+    text-decoration: none;
+    transition: .3s ease-in-out;
+}
+header nav a:hover {
+    color: #f54b35;
+}
+
+#inicio {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 80px 128px 80px;
+    position: relative;
+}
+
+h1,
+h2 {
+    font-weight: 600;
+    font-size: 32px;
+    margin-bottom: 32px;
+}
+
+.paragrafo {
+    line-height: 150%;
+    margin-bottom: 32px;
+}
+
+.botaoPrincipal {
+    background-color: #FF725E;
+    border-radius: 8px;
+    color: #FFFFFF;
+    padding: 20px 64px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 23%;
+}
+
+.botao {
+    background-color: #FF725E;
+    border-radius: 8px;
+    color: #FFFFFF;
+    padding: 20px 64px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+#add-pet-button {
+    position: absolute;
+    left: 50%;
+    top: 23%;
+}
+
+.botao-transparente {
+    background-color: transparent;
+    color: #FF725E;
+    padding: 16px 32px;
+    text-underline-offset: 4px;
+    border: 1px solid #FF725E;
+    cursor: pointer;
+}
+
+.absolute { 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -10;
+}
+
+#clinica {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 64px 80px;
+}
+
+#clinica li {
+    margin-bottom: 16px;
+    margin-left: 32px;
+}
+
+#farmacia {
+    padding: 64px 80px;
+    text-align: center;
+}
+
+#farmacia img {
+    margin: 64px auto;
+}
+
+#farmacia .paragrafo {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+#duvidas {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 64px 80px;
+}
+
+.duvida {
+    position: relative;
+}
+
+.duvida h3 {
+    border: 2px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 24px;
+}
+
+.duvida img {
+    position: absolute;
+    top: 32px;
+    right: 24px;
+}
+
+.duvida .paragrafo {
+    border-right: 1px solid #FF725E;
+    border-bottom: 1px solid #FF725E;
+    border-left: 1px solid #FF725E;
+    border-radius: 0 0 8px 8px;
+    margin-top: -8px;
+    padding: 0 24px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.duvida.ativa .paragrafo{
+    height: fit-content;
+    opacity: 1;
+    padding: 24px;
+}
+
+footer {
+    background-color: rgba(255, 152, 108, 0.25);
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 64px 80px;
+}
+
+footer img,
+footer .titulo {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+footer nav a {
+    color: #263138;
+    display: block;
+    margin: 16px;
+    text-decoration: none;
+}
+
+footer p {
+    margin-bottom: 16px;
+    max-width: 350px;
+}
+
+footer p a {
+    color: #263138;
+    text-decoration: none;
+}
+
+#copyright {
+    background-color: #263138;
+    color: #FFFFFF;
+    padding: 24px;
+    text-align: center;
+}
+
+#copyright a {
+    color: #FF9A6C;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+.card-usuario {
+    flex: 2;
+
+}
+
+.card-pet {
+    flex: 1;
+}
+
+.pet {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#pets-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#pet-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+#pet-form-container.form-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+#pet-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 400px;
+    width: 100%;
+}
+
+#pet-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#pet-form input {
+    display: block;
+    margin-bottom: 16px;
+    padding: 8px;
+    width: calc(100% - 16px);
+}
