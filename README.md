@@ -29,7 +29,7 @@ Este projeto é licenciado sob a MIT License (https://github.com/GabrielHenrique
 
     - Nome: Matheus Carneiro
     - Email: matheusbrito13.mb@gmail.com
-    - GitHub: `https://github.com/suehtamotirb`
+    - GitHub: https://github.com/suehtamotirb
 
     - Nome: Micael Martins Cirilo
     - Email: micamiluxd@gmail.com
