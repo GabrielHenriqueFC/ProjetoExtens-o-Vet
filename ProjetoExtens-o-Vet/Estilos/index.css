@@ -356,3 +356,10 @@ footer p a {
     padding: 8px;
     width: calc(100% - 16px);
 }
+
+.link-zap {
+    margin-top: 8px;
+    color: #263138;
+    letter-spacing: 1px;
+
+}

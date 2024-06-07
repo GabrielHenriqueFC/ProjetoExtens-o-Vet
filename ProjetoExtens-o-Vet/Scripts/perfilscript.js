@@ -88,24 +88,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     appointmentForm.addEventListener('submit', (event) => {
         event.preventDefault();
-
+    
         const appointmentDate = document.getElementById('appointment-date').value;
         const appointmentTime = document.getElementById('appointment-time').value;
         const appointmentType = document.getElementById('appointment-type').value;
-
+    
         const appointmentDay = new Date(appointmentDate).getDay();
-
-       
-        if (appointmentDay === 6 || appointmentDay === 0) {
+    
+        if (appointmentDay === 6 || appointmentDay === 5) {
             alert('Consultas não estão disponíveis aos sábados ou domingos. Por favor, selecione um dia útil.');
             return;
         }
-
-       
-
-        appointmentFormContainer.classList.remove('form-visible');
+    
+        
+        const existingAppointments = Object.values(localStorage).filter(item => {
+            try {
+                const parsedItem = JSON.parse(item);
+                const existingTime = new Date(parsedItem.date + ' ' + parsedItem.time);
+                const selectedTime = new Date(appointmentDate + ' ' + appointmentTime);
+                const diffInMinutes = Math.abs(existingTime - selectedTime) / (1000 * 60);
+                return diffInMinutes < 60;
+            } catch (error) {
+                return false;
+            }
+        });
+    
+        if (existingAppointments.length > 0) {
+            alert('Já existe um agendamento para este horário ou dentro da próxima hora. Por favor, selecione outro horário.');
+            return;
+        }
+    
+        
+        const newAppointment = {
+            date: appointmentDate,
+            time: appointmentTime,
+            type: appointmentType
+        };
+        
+        const appointmentId = `appointment_${userId}_${new Date().getTime()}`;
+        localStorage.setItem(appointmentId, JSON.stringify(newAppointment));
+    
+        
+        const message = `Olá! Gostaria de agendar uma consulta para ${newAppointment.type} no dia ${newAppointment.date} às ${newAppointment.time}.`;
+    
+        
+        const whatsappLink = `https://wa.me/seu-numero-de-telefone/?text=${encodeURIComponent(message)}`;
+    
+        
+        const whatsappLinkElement = document.createElement('a');
+        whatsappLinkElement.setAttribute('href', whatsappLink);
+        whatsappLinkElement.setAttribute('target', '_blank');
+        whatsappLinkElement.classList = 'link-zap';
+        whatsappLinkElement.textContent = 'Agendamento realizado! Fale conosco no Whatsapp';
+        appointmentForm.appendChild(whatsappLinkElement);
+    
+        
         appointmentForm.reset();
     });
+    
+    
+    
 
     const openAppointmentForm = (petIndex) => {
       
