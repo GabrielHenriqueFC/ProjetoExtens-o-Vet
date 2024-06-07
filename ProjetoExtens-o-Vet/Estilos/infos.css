@@ -116,3 +116,14 @@ footer nav a {
 footer nav a:hover {
     color: #FF725E;
 }
+
+.last-section {
+    font-size: 1.2rem;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.last-section img{
+    height: 300px;
+    margin-top: 50px;
+}

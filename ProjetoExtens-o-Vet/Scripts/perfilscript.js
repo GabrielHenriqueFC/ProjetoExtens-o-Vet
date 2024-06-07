@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem(userId));
         if (user !== null) {
             document.getElementById('user-name').textContent = user.nome;
-            document.getElementById('user-email').textContent = user.email;
-            // Se houver um campo de número, adicione o valor correspondente
-            // document.getElementById('user-phone').textContent = user.numero || 'N/A';
+            document.getElementById('user-email').textContent = user.email; //Carrega as informações do usuario
+           
         }
     }
 
@@ -96,21 +95,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const appointmentDay = new Date(appointmentDate).getDay();
 
-        // Check if the selected date falls on a weekend
+       
         if (appointmentDay === 6 || appointmentDay === 0) {
             alert('Consultas não estão disponíveis aos sábados ou domingos. Por favor, selecione um dia útil.');
             return;
         }
 
-        // Aqui você pode adicionar a lógica para salvar a consulta agendada no localStorage
-        // ou enviar para um servidor usando uma API
+       
 
         appointmentFormContainer.classList.remove('form-visible');
         appointmentForm.reset();
     });
 
     const openAppointmentForm = (petIndex) => {
-        // Você pode usar petIndex para identificar o pet específico e salvar a consulta relacionada a ele
+      
         appointmentFormContainer.classList.add('form-visible');
     };
 });
