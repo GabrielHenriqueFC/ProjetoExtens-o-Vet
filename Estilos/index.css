@@ -7,9 +7,10 @@
 
 body {
     color: #263138;
+    padding-top: 80px; 
 }
 
-header { 
+header {
     background-color: #FF9A6C;
     display: flex;
     align-items: center;
@@ -18,13 +19,22 @@ header {
     padding-right: 80px;
     padding-top: 24px;
     padding-bottom: 24px;
+    position: fixed; 
+    top: -100px; 
+    width: 100%; 
+    z-index: 1000; 
+    transition: top 0.5s ease-in-out; 
+}
+
+header.show {
+    top: 0;
 }
 
 header .logo {
     font-size: 2rem;
     font-weight: 700;
     color: #FFFFFF;
-    background: linear-gradient(to bottom,  #fc1f02 50%,#FF725E);
+    background: linear-gradient(to bottom, #fc1f02 50%, #FF725E);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -36,6 +46,7 @@ header nav a {
     text-decoration: none;
     transition: .3s ease-in-out;
 }
+
 header nav a:hover {
     color: #f54b35;
 }
@@ -98,7 +109,7 @@ h2 {
     cursor: pointer;
 }
 
-.absolute { 
+.absolute {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -169,7 +180,7 @@ h2 {
     transition: .2s;
 }
 
-.duvida.ativa .paragrafo{
+.duvida.ativa .paragrafo {
     height: fit-content;
     opacity: 1;
     padding: 24px;
@@ -228,7 +239,6 @@ footer p a {
 
 .card-usuario {
     flex: 2;
-
 }
 
 .card-pet {
@@ -286,3 +296,7 @@ footer p a {
     padding: 8px;
     width: calc(100% - 16px);
 }
+
+
+
+

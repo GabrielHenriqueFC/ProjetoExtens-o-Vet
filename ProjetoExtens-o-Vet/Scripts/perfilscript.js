@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const userId = localStorage.getItem('loggedInUserId');
     if (userId !== null) {
@@ -11,15 +9,45 @@ document.addEventListener('DOMContentLoaded', () => {
             // document.getElementById('user-phone').textContent = user.numero || 'N/A';
         }
     }
-});
 
-
-document.addEventListener('DOMContentLoaded', () => {
     const addPetButton = document.getElementById('add-pet-button');
     const petFormContainer = document.getElementById('pet-form-container');
     const cancelButton = document.getElementById('cancel-button');
     const petForm = document.getElementById('pet-form');
     const petsContainer = document.getElementById('pets-container');
+    const appointmentFormContainer = document.getElementById('appointment-form-container');
+    const cancelAppointmentButton = document.getElementById('cancel-appointment-button');
+    const appointmentForm = document.getElementById('appointment-form');
+
+    // Carrega os pets do localStorage associados ao usuário logado
+    const userPets = JSON.parse(localStorage.getItem(`pets_${userId}`)) || [];
+
+    const renderPet = (pet, index) => {
+        const newPetCard = document.createElement('div');
+        newPetCard.classList.add('card', 'card-pet');
+        const petImageSrc = pet.species.toLowerCase() === 'gato' ? '../Imagens/gato.png' : '../Imagens/cachorro.png';
+        newPetCard.innerHTML = `
+            <h2>Pet</h2>
+            <div class="pet">
+                <div class="pet-card-info">
+                    <p><strong>Nome:</strong> ${pet.name}</p>
+                    <p><strong>Espécie:</strong> ${pet.species}</p>
+                    <p><strong>Raça:</strong> ${pet.breed}</p>
+                    <p><strong>Porte:</strong> ${pet.size}</p>
+                    <p><strong>Idade:</strong> ${pet.age}</p>
+                </div>
+                <img src="${petImageSrc}" alt="img-${pet.species.toLowerCase()}" height="70px" width="70px" class="pet-card-img">
+            </div>
+        `;
+        newPetCard.addEventListener('click', () => {
+            openAppointmentForm(index);
+        });
+        petsContainer.appendChild(newPetCard);
+    };
+
+    userPets.forEach((pet, index) => {
+        renderPet(pet, index);
+    });
 
     addPetButton.addEventListener('click', () => {
         petFormContainer.classList.add('form-visible');
@@ -27,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cancelButton.addEventListener('click', () => {
         petFormContainer.classList.remove('form-visible');
+    });
+
+    cancelAppointmentButton.addEventListener('click', () => {
+        appointmentFormContainer.classList.remove('form-visible');
     });
 
     petForm.addEventListener('submit', (event) => {
@@ -38,22 +70,39 @@ document.addEventListener('DOMContentLoaded', () => {
         const petSize = document.getElementById('pet-size').value;
         const petAge = document.getElementById('pet-age').value;
 
-        const newPetCard = document.createElement('div');
-        newPetCard.classList.add('card', 'card-pet');
-        newPetCard.innerHTML = `
-            <h2>Pet</h2>
-            <div class="pet">
-                <p><strong>Nome:</strong> ${petName}</p>
-                <p><strong>Espécie:</strong> ${petSpecies}</p>
-                <p><strong>Raça:</strong> ${petBreed}</p>
-                <p><strong>Porte:</strong> ${petSize}</p>
-                <p><strong>Idade:</strong> ${petAge}</p>
-            </div>
-        `;
+        const newPet = {
+            name: petName,
+            species: petSpecies,
+            breed: petBreed,
+            size: petSize,
+            age: petAge
+        };
 
-        petsContainer.appendChild(newPetCard);
+        userPets.push(newPet);
+        localStorage.setItem(`pets_${userId}`, JSON.stringify(userPets));
+
+        renderPet(newPet, userPets.length - 1);
 
         petFormContainer.classList.remove('form-visible');
         petForm.reset();
     });
+
+    appointmentForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const appointmentDate = document.getElementById('appointment-date').value;
+        const appointmentTime = document.getElementById('appointment-time').value;
+        const appointmentType = document.getElementById('appointment-type').value;
+
+        // Aqui você pode adicionar a lógica para salvar a consulta agendada no localStorage
+        // ou enviar para um servidor usando uma API
+
+        appointmentFormContainer.classList.remove('form-visible');
+        appointmentForm.reset();
+    });
+
+    const openAppointmentForm = (petIndex) => {
+        // Você pode usar petIndex para identificar o pet específico e salvar a consulta relacionada a ele
+        appointmentFormContainer.classList.add('form-visible');
+    };
 });

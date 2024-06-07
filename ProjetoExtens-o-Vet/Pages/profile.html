@@ -13,9 +13,8 @@
 <body>
     <header>
         <a href="../Pages/home.html" class="logo">Uniesp Vet</a>
-
         <nav>
-            <a href="../Pages/home.html">Home</a>
+            <a href="../Pages/homelog.html">Home</a>
             <a href="../Pages/info.html">Informações</a>
             <a href="../Pages/profile.html">Perfil</a>
         </nav>
@@ -23,26 +22,17 @@
 
     <main>
         <section>
-            <h1>Perfil do Usuário</h1>
+            <h1 class="perfil-user-title">Perfil do Usuário</h1>
             <div class="card card-usuario">
                 <h2>Informações do Usuário</h2>
                 <p><strong>Nome:</strong> <span id="user-name"></span></p>
                 <p><strong>Email:</strong> <span id="user-email"></span></p>
-                <p><strong>Número:</strong> <span id="user-phone">N/A</span></p> <!-- Adicionei este campo -->
+                <p><strong>Número:</strong> <span id="user-phone">N/A</span></p>
                 <button id="add-pet-button" class="botao">Cadastrar Pet</button>
             </div>
-
+            <h3 class="clique-tag">Clique para agendar a consulta</h3>
             <div id="pets-container">
-                <div class="card card-pet">
-                    <h2>Pet</h2>
-                    <div class="pet">
-                        <p><strong>Nome:</strong> Rex</p>
-                        <p><strong>Espécie:</strong> Cachorro</p>
-                        <p><strong>Raça:</strong> Labrador</p>
-                        <p><strong>Porte:</strong> Grande</p>
-                        <p><strong>Idade:</strong> 3 anos</p>
-                    </div>
-                </div>
+                
             </div>
         </section>
         
@@ -68,6 +58,30 @@
                 <button type="button" id="cancel-button" class="botao-transparente">Cancelar</button>
             </form>
         </div>
+
+        <div id="appointment-form-container" class="form-hidden">
+            <form id="appointment-form">
+                <h2>Agendar Consulta</h2>
+                <label for="appointment-date">Data da consulta:</label>
+                <input type="date" id="appointment-date" name="appointment-date" required>
+
+                <label for="appointment-time">Hora da consulta:</label>
+                <input type="time" id="appointment-time" name="appointment-time" min="13:00" max="17:00" required>
+
+                <label for="appointment-type">Tipo de consulta:</label>
+                <select id="appointment-type" name="appointment-type" required>
+                    <option value="consulta de rotina">Consulta de Rotina</option>
+                    <option value="cirurgica">Cirúrgica</option>
+                    <option value="ultrassom">Ultrassom</option>
+                    <option value="raio-x">Raio-X</option>
+                    <option value="vacinação">Vacinação</option>
+                    <option value="exames hematológicos">Exames Hematológicos</option>
+                </select>
+                
+                <button type="submit" class="botao">Agendar</button>
+                <button type="button" id="cancel-appointment-button" class="botao-transparente">Cancelar</button>
+            </form>
+        </div>
     </main>
 
     <footer>
@@ -79,7 +93,7 @@
         <div>
             <strong class="titulo">Links rápidos</strong>
             <nav>
-                <a href="../Pages/home.html">Home</a>
+                <a href="../Pages/homelog.html">Home</a>
                 <a href="../Pages/info.html">Informações</a>
                 <a href="../Pages/profile.html">Perfil</a>
             </nav>
@@ -95,4 +109,5 @@
 
     <script src="../Scripts/script.js"></script>
     <script src="../Scripts/perfilscript.js"></script> 
+</body>
 </html>
