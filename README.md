@@ -29,16 +29,16 @@ Este projeto é licenciado sob a MIT License (https://github.com/GabrielHenrique
 
     - Nome: Matheus Carneiro
     - Email: matheusbrito13.mb@gmail.com
-    - GitHub: [(https://github.com/suehtamotirb)](https://github.com/suehtamotirb)
+    - GitHub: `https://github.com/suehtamotirb`
 
     - Nome: Micael Martins Cirilo
     - Email: micamiluxd@gmail.com
-    - GitHub: [https://github.com/Yoshelson](https://github.com/Yoshelson)
+    - GitHub: https://github.com/Yoshelson
 
     - Nome: Lucas Martins Cirilo
     - Email: Lucasmciriloz@gmail.com
-    - GitHub: [https://github.com/Lucasmcirilo](https://github.com/Lucasmcirilo)
+    - GitHub: https://github.com/Lucasmcirilo
 
     - Nome: Gabriel Henrique Fernandes da Costa
     - Email: gabriell.henriq@hotmail.com
-    - GitHub: [https://github.com/GabrielHenriqueFC](https://github.com/GabrielHenriqueFC)
+    - GitHub: https://github.com/GabrielHenriqueFC
