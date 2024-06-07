@@ -55,6 +55,10 @@ header nav a:hover {
     position: relative;
 }
 
+.incio-sec {
+    height: 300px;
+}
+
 h1,
 h2 {
     font-weight: 600;
@@ -124,6 +128,7 @@ h2 {
     margin-bottom: 16px;
     margin-left: 32px;
 }
+
 
 #farmacia {
     padding: 64px 80px;

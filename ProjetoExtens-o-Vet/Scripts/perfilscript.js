@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p><strong>Porte:</strong> ${pet.size}</p>
                     <p><strong>Idade:</strong> ${pet.age}</p>
                 </div>
-                <img src="${petImageSrc}" alt="img-${pet.species.toLowerCase()}" height="70px" width="70px" class="pet-card-img">
+                <img src="${petImageSrc}" alt="img-${pet.species.toLowerCase()}" height="60px" width="60px" class="pet-card-img">
             </div>
         `;
         newPetCard.addEventListener('click', () => {
@@ -93,6 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const appointmentDate = document.getElementById('appointment-date').value;
         const appointmentTime = document.getElementById('appointment-time').value;
         const appointmentType = document.getElementById('appointment-type').value;
+
+        const appointmentDay = new Date(appointmentDate).getDay();
+
+        // Check if the selected date falls on a weekend
+        if (appointmentDay === 6 || appointmentDay === 0) {
+            alert('Consultas não estão disponíveis aos sábados ou domingos. Por favor, selecione um dia útil.');
+            return;
+        }
 
         // Aqui você pode adicionar a lógica para salvar a consulta agendada no localStorage
         // ou enviar para um servidor usando uma API

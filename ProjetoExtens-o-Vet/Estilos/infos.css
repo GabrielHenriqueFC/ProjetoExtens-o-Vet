@@ -1,0 +1,118 @@
+/* style.css */
+
+/* Estilos para o header */
+header {
+    background-color: #FF9A6C;
+    padding: 24px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a {
+    color: #FFFFFF;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 32px;
+}
+
+nav a:hover {
+    color: #f54b35;
+}
+
+/* Estilos para a seção de informações */
+main {
+    padding: 40px 80px;
+}
+
+.titulo-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-info h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.titulo-info p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #333333;
+}
+
+.serv-title p{
+    font-size: 1.5rem;
+}
+
+#Lista_serv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+#Lista_serv h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FF725E;
+    margin-bottom: 8px;
+    margin-top: 30px;
+}
+
+#Lista_serv p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333333;
+    
+}
+
+/* Estilos para as imagens */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+/* Estilos para o footer */
+footer {
+    background-color: rgba(255, 152, 108, 0.25);
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333333;
+}
+
+footer p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
+footer nav a {
+    color: #333333;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 8px 16px;
+}
+
+footer nav a:hover {
+    color: #FF725E;
+}
