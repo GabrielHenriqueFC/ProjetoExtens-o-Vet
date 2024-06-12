@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const userId = localStorage.getItem('loggedInUserId');
+    let user = null;
     if (userId !== null) {
-        const user = JSON.parse(localStorage.getItem(userId));
+        user = JSON.parse(localStorage.getItem(userId));
         if (user !== null) {
             document.getElementById('user-name').textContent = user.nome;
-            document.getElementById('user-email').textContent = user.email; //Carrega as informações do usuario
-           
+            document.getElementById('user-email').textContent = user.email;
         }
     }
 
@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelAppointmentButton = document.getElementById('cancel-appointment-button');
     const appointmentForm = document.getElementById('appointment-form');
 
-    // Carrega os pets do localStorage associados ao usuário logado
     const userPets = JSON.parse(localStorage.getItem(`pets_${userId}`)) || [];
 
     const renderPet = (pet, index) => {
@@ -88,19 +87,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     appointmentForm.addEventListener('submit', (event) => {
         event.preventDefault();
-    
+
         const appointmentDate = document.getElementById('appointment-date').value;
         const appointmentTime = document.getElementById('appointment-time').value;
         const appointmentType = document.getElementById('appointment-type').value;
-    
+
         const appointmentDay = new Date(appointmentDate).getDay();
-    
-        if (appointmentDay === 6 || appointmentDay === 5) {
+
+        if (appointmentDay === 6 || appointmentDay === 0) {
             alert('Consultas não estão disponíveis aos sábados ou domingos. Por favor, selecione um dia útil.');
             return;
         }
-    
-        
+
         const existingAppointments = Object.values(localStorage).filter(item => {
             try {
                 const parsedItem = JSON.parse(item);
@@ -112,45 +110,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 return false;
             }
         });
-    
+
         if (existingAppointments.length > 0) {
             alert('Já existe um agendamento para este horário ou dentro da próxima hora. Por favor, selecione outro horário.');
             return;
         }
-    
-        
+
+        const petIndex = appointmentForm.dataset.petIndex;
+        const pet = userPets[petIndex];
+
         const newAppointment = {
             date: appointmentDate,
             time: appointmentTime,
-            type: appointmentType
+            type: appointmentType,
+            pet: pet
         };
-        
+
         const appointmentId = `appointment_${userId}_${new Date().getTime()}`;
         localStorage.setItem(appointmentId, JSON.stringify(newAppointment));
-    
-        
-        const message = `Olá! Gostaria de agendar um(a) ${newAppointment.type} no dia ${newAppointment.date} às ${newAppointment.time}.`;
-    
-        
+
+        const message = `Olá! Gostaria de agendar um(a) ${newAppointment.type} no dia ${newAppointment.date} às ${newAppointment.time}.\n\nTutor:\nNome: ${user.nome}\n\nPet:\nNome: ${pet.name}\nEspécie: ${pet.species}\nRaça: ${pet.breed}\nPorte: ${pet.size}\nIdade: ${pet.age}`;
+
         const whatsappLink = `https://wa.me/83999941279/?text=${encodeURIComponent(message)}`;
-    
-        
+
         const whatsappLinkElement = document.createElement('a');
         whatsappLinkElement.setAttribute('href', whatsappLink);
         whatsappLinkElement.setAttribute('target', '_blank');
         whatsappLinkElement.classList = 'link-zap';
         whatsappLinkElement.textContent = 'Agendamento realizado! Fale conosco no Whatsapp';
         appointmentForm.appendChild(whatsappLinkElement);
-    
-        
+
         appointmentForm.reset();
     });
-    
-    
+
     
 
     const openAppointmentForm = (petIndex) => {
-      
         appointmentFormContainer.classList.add('form-visible');
+        appointmentForm.dataset.petIndex = petIndex; // Armazena o índice do pet no formulário
     };
 });
