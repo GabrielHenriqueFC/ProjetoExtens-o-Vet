@@ -61,6 +61,11 @@ function Login() {
             localStorage.setItem('loggedInUserId', item.id);  // Salva o ID do usuário logado
             location.href = 'profile.html';  // Redireciona para a página de perfil
             break;
+        } else if (loginEmail == 'admin' && loginSenha == '1234') {
+            alert('Login bem-sucedido! Redirecionando para pagina de administração');
+            loginSuccess = true;
+            location.href = '';
+            break;
         }
     }
 

@@ -129,10 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(appointmentId, JSON.stringify(newAppointment));
     
         
-        const message = `Olá! Gostaria de agendar uma consulta para ${newAppointment.type} no dia ${newAppointment.date} às ${newAppointment.time}.`;
+        const message = `Olá! Gostaria de agendar um(a) ${newAppointment.type} no dia ${newAppointment.date} às ${newAppointment.time}.`;
     
         
-        const whatsappLink = `https://wa.me/seu-numero-de-telefone/?text=${encodeURIComponent(message)}`;
+        const whatsappLink = `https://wa.me/83999941279/?text=${encodeURIComponent(message)}`;
     
         
         const whatsappLinkElement = document.createElement('a');
