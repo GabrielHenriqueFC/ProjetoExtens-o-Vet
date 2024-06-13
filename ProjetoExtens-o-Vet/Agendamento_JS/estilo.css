@@ -1,10 +1,11 @@
 /* Define a paleta de cores */
 :root {
-    --primary-color: #4CAF50; /* Verde claro */
+    --primary-color: #6BA292; /* Verde Veterinário */
     --secondary-color: #FFEB3B; /* Amarelo claro */
-    --background-color: #F0F8FF; /* Alice Blue */
+    --background-color: #F8F8F8; /* Cinza claro */
     --text-color: #333; /* Texto escuro */
     --accent-color: #FF5722; /* Laranja */
+    --header-footer-color: #5A8F7B; /* Verde escuro */
 }
 
 /* Estilos globais */
@@ -15,11 +16,35 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('https://static.vecteezy.com/system/resources/previews/010/632/880/non_2x/abstract-wave-green-background-free-vector.jpg');
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
+nav {
+    background-color: var(--header-footer-color);
+    padding: 10px;
+}
 
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
 
 /* Container principal */
 .container {
@@ -27,22 +52,22 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
-    height: 110%;
+    width: 80%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #c2ffb3;
-    border-style: hidden;
-    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
 }
 
 /* Estilo do cabeçalho */
 header {
-    background-color: var(--primary-color);
+    background-color: var(--header-footer-color);
     color: white;
     padding: 20px;
     text-align: center;
+    border-bottom: 3px solid var(--primary-color);
 }
 
 header h1 {
@@ -51,6 +76,7 @@ header h1 {
 
 /* Estilos dos formulários e selects */
 form {
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -60,21 +86,24 @@ label {
     font-weight: bold;
 }
 
-select, input[type="text"], input[type="date"], input[type="time"] {
+input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="time"], select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
+    background-color: var(--background-color);
 }
-.dataForm{
+
+.dataForm {
     display: inline-block;
-    width: 40%;
-    padding-right: 12%;
+    width: 48%;
+    padding-right: 2%;
 }
-.horarioForm{
+
+.horarioForm {
     display: inline-block;
-    width: 40%;
+    width: 48%;
 }
 
 button {
@@ -84,6 +113,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -94,10 +124,11 @@ button:hover {
 #lista-agendamentos {
     list-style-type: none;
     padding: 0;
+    width: 100%;
 }
 
 #lista-agendamentos li {
-    background-color: white;
+    background-color: var(--background-color);
     border: 1px solid var(--primary-color);
     border-radius: 5px;
     margin-bottom: 10px;
@@ -109,19 +140,71 @@ button:hover {
 
 #lista-agendamentos li button {
     background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #lista-agendamentos li button:hover {
     background-color: var(--primary-color);
 }
 
-
-
 /* Estilos adicionais para a aparência */
 h2 {
     color: var(--primary-color);
+    text-align: center;
 }
 
 .container h2 {
     margin-top: 0;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid var(--primary-color);
+}
+
+footer {
+    background-color: var(--header-footer-color);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.footer-content a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
 }

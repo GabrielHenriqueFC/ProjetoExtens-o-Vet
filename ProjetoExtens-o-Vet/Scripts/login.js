@@ -64,7 +64,7 @@ function Login() {
         } else if (loginEmail == 'admin' && loginSenha == '1234') {
             alert('Login bem-sucedido! Redirecionando para pagina de administração');
             loginSuccess = true;
-            location.href = '';
+            location.href = '../Agendamento_JS/Agendamento.html';
             break;
         }
     }

@@ -1,18 +1,3 @@
-// Exemplo de dados de usuários e o usuário logado
-var usuarios = [
-    {
-        nome: "usuario1",
-        tutores: ["Tutor1", "Tutor2"],
-        pets: ["Pet1", "Pet2"]
-    },
-    {
-        nome: "usuario2",
-        tutores: ["Tutor3"],
-        pets: ["Pet3"]
-    }
-];
-var usuarioLogado = "usuario1";
-
 // Funções de carregar e salvar agendamentos no localStorage
 function carregarAgendamentos() {
     var agendamentosString = localStorage.getItem('agendamentos');
@@ -28,12 +13,16 @@ function salvarAgendamentos(agendamentos) {
 }
 
 // Função para criar um novo agendamento
-function criarAgendamento(tutor, data, horario, pet, tipoAtendimento, status) {
+function criarAgendamento(tutor, telefone, email, pet, idade, peso, data, horario, tipoAtendimento, status) {
     return {
         tutor: tutor,
+        telefone: telefone,
+        email: email,
+        pet: pet,
+        idade: idade,
+        peso: peso,
         data: data,
         horario: horario,
-        pet: pet,
         tipoAtendimento: tipoAtendimento,
         status: status
     };
@@ -42,9 +31,17 @@ function criarAgendamento(tutor, data, horario, pet, tipoAtendimento, status) {
 // Função para adicionar um agendamento
 function adicionarAgendamento(novoAgendamento) {
     var agenda = carregarAgendamentos();
+    
+    // Cancelar todas as outras consultas se for uma consulta cirúrgica
+    if (novoAgendamento.tipoAtendimento === "Consulta Cirúrgica") {
+        agenda = [];
+    }
+
     agenda.push(novoAgendamento);
     salvarAgendamentos(agenda);
     exibirAgendamentos();
+    enviarEmailConfirmacao(novoAgendamento);
+    enviarMensagemWhatsApp(novoAgendamento);
 }
 
 // Função para cancelar um agendamento pelo índice
@@ -55,81 +52,7 @@ function cancelarAgendamento(index) {
     exibirAgendamentos();
 }
 
-// Verificar existência de consulta cirúrgica em uma data específica
-function verificarConsultaCirurgicaExistente(data) {
-    var agenda = carregarAgendamentos();
-    return agenda.some(function(agendamento) {
-        return agendamento.data === data && agendamento.tipoAtendimento === "Consulta Cirúrgica";
-    });
-}
-
-// Verificar existência de consulta de rotina em um horário específico
-function verificarConsultaRotinaExistente(horario) {
-    var agenda = carregarAgendamentos();
-    return agenda.some(function(agendamento) {
-        return agendamento.horario === horario && agendamento.tipoAtendimento === "Consulta de Rotina";
-    });
-}
-
-// Verificar existência de consulta de rotina no próximo horário
-function verificarConsultaRotinaProximoHorario(horario) {
-    var agenda = carregarAgendamentos();
-    var horaAtual = new Date(`1970-01-01T${horario}:00`).getHours(); 
-    var proximoHorario = new Date();
-    proximoHorario.setHours(horaAtual + 1, 0, 0, 0); 
-    var proximoHorarioString = proximoHorario.toTimeString().substring(0, 5); 
-
-    return agenda.some(function(agendamento) {
-        return agendamento.horario === proximoHorarioString && agendamento.tipoAtendimento === "Consulta de Rotina";
-    });
-}
-
-// Preencher select de tutores baseado no usuário logado
-function preencherTutores(usuarioLogado) {
-    var selectTutor = document.getElementById('tutor');
-    selectTutor.innerHTML = ''; 
-
-    usuarios.forEach(function(usuario) {
-        if (usuario.nome === usuarioLogado) {
-            usuario.tutores.forEach(function(tutor) {
-                var option = document.createElement('option');
-                option.value = tutor;
-                option.textContent = tutor;
-                selectTutor.appendChild(option);
-            });
-        }
-    });
-}
-
-// Preencher select de pets baseado no tutor selecionado
-function preencherPets(tutorSelecionado) {
-    var selectPet = document.getElementById('pet');
-    selectPet.innerHTML = ''; 
-
-    usuarios.forEach(function(usuario) {
-        usuario.tutores.forEach(function(tutor) {
-            if (tutor === tutorSelecionado) {
-                usuario.pets.forEach(function(pet) {
-                    var option = document.createElement('option');
-                    option.value = pet;
-                    option.textContent = pet;
-                    selectPet.appendChild(option);
-                });
-            }
-        });
-    });
-}
-
-// Evento de alteração no select de tutor
-document.getElementById('tutor').addEventListener('change', function() {
-    var tutorSelecionado = this.value;
-    preencherPets(tutorSelecionado);
-});
-
-// Preencher tutores ao carregar a página
-preencherTutores(usuarioLogado);
-
-// Exibir agendamentos no HTML
+// Função para exibir agendamentos no HTML
 function exibirAgendamentos() {
     var listaAgendamentos = document.getElementById('lista-agendamentos');
     listaAgendamentos.innerHTML = ''; 
@@ -137,7 +60,7 @@ function exibirAgendamentos() {
     var agenda = carregarAgendamentos();
     agenda.forEach(function(agendamento, index) {
         var itemLista = document.createElement('li');
-        itemLista.textContent = `Tutor: ${agendamento.tutor}, Data: ${agendamento.data}, Horário: ${agendamento.horario}, Pet: ${agendamento.pet}, Tipo de Atendimento: ${agendamento.tipoAtendimento}, Status: ${agendamento.status}`;
+        itemLista.textContent = `Tutor: ${agendamento.tutor}, Telefone: ${agendamento.telefone}, Email: ${agendamento.email}, Pet: ${agendamento.pet}, Idade: ${agendamento.idade}, Peso: ${agendamento.peso}, Data: ${agendamento.data}, Horário: ${agendamento.horario}, Tipo de Atendimento: ${agendamento.tipoAtendimento}, Status: ${agendamento.status}`;
         var botaoCancelar = document.createElement('button');
         botaoCancelar.textContent = 'Cancelar';
         botaoCancelar.addEventListener('click', function() {
@@ -148,15 +71,41 @@ function exibirAgendamentos() {
     });
 }
 
+// Função para enviar email de confirmação
+function enviarEmailConfirmacao(agendamento) {
+    var email = agendamento.email;
+    var assunto = "Confirmação de Agendamento";
+    var corpo = `Olá ${agendamento.tutor},\n\nSeu agendamento para ${agendamento.tipoAtendimento} foi confirmado para o dia ${agendamento.data} às ${agendamento.horario}.\n\nAtenciosamente,\nClínica Veterinária`;
+
+    // Simulando envio de email (substituir com funcionalidade real de envio de email)
+    console.log(`Enviando email para: ${email}\nAssunto: ${assunto}\nCorpo:\n${corpo}`);
+}
+
+// Função para enviar mensagem de confirmação via WhatsApp
+function enviarMensagemWhatsApp(agendamento) {
+    var telefone = agendamento.telefone.replace(/\D/g, ''); // Remove caracteres não numéricos do telefone
+    var mensagem = `Olá ${agendamento.tutor}, seu(a) ${agendamento.tipoAtendimento} foi agendada com sucesso para o dia ${agendamento.data} às ${agendamento.horario}. 
+    \nDetalhes do Pet:
+    \nNome: ${agendamento.pet}
+    \nIdade: ${agendamento.idade} anos
+    \nPeso: ${agendamento.peso} kg`;
+    var url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
+}
+
 // Evento de clique no botão de adicionar agendamento
 document.getElementById('adicionarAgendamento').addEventListener('click', function() {
     var tutor = document.getElementById('tutor').value;
+    var telefone = document.getElementById('telefone').value;
+    var email = document.getElementById('email').value;
+    var pet = document.getElementById('pet').value;
+    var idade = document.getElementById('idade').value;
+    var peso = document.getElementById('peso').value;
     var data = document.getElementById('data').value;
     var horario = document.getElementById('horario').value;
-    var pet = document.getElementById('pet').value;
     var tipoAtendimento = document.getElementById('tipoAtendimento').value;
 
-    var novoAgendamento = criarAgendamento(tutor, data, horario, pet, tipoAtendimento, 'Agendado');
+    var novoAgendamento = criarAgendamento(tutor, telefone, email, pet, idade, peso, data, horario, tipoAtendimento, 'Agendado');
     adicionarAgendamento(novoAgendamento);
 });
 
