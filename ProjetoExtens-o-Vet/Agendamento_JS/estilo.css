@@ -1,210 +1,132 @@
-/* Define a paleta de cores */
-:root {
-    --primary-color: #6BA292; /* Verde Veterinário */
-    --secondary-color: #FFEB3B; /* Amarelo claro */
-    --background-color: #F8F8F8; /* Cinza claro */
-    --text-color: #333; /* Texto escuro */
-    --accent-color: #FF5722; /* Laranja */
-    --header-footer-color: #5A8F7B; /* Verde escuro */
-}
-
-/* Estilos globais */
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('https://static.vecteezy.com/system/resources/previews/010/632/880/non_2x/abstract-wave-green-background-free-vector.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #f4f4f4;
 }
 
-nav {
-    background-color: var(--header-footer-color);
-    padding: 10px;
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-    display: flex;
-    justify-content: space-around;
+    text-align: center;
+    background-color: #333;
 }
 
 nav ul li {
     display: inline;
+    margin: 0;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-    font-weight: bold;
+    color: white;
+    padding: 14px 20px;
+    display: inline-block;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    background-color: #111;
 }
 
-/* Container principal */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px auto;
     padding: 20px;
+    margin: 20px;
     background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Estilo do cabeçalho */
-header {
-    background-color: var(--header-footer-color);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 3px solid var(--primary-color);
-}
-
-header h1 {
-    margin: 0;
-}
-
-/* Estilos dos formulários e selects */
-form {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-label {
+form label {
     display: block;
     margin: 10px 0 5px;
-    font-weight: bold;
 }
 
-input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="time"], select {
+form input, form select, form button {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    background-color: var(--background-color);
+    margin: 5px 0 10px;
 }
 
-.dataForm {
-    display: inline-block;
-    width: 48%;
-    padding-right: 2%;
-}
-
-.horarioForm {
-    display: inline-block;
-    width: 48%;
-}
-
-button {
-    background-color: var(--primary-color);
+form button {
+    background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: var(--accent-color);
+form button:hover {
+    background-color: #45a049;
 }
 
-/* Lista de agendamentos */
-#lista-agendamentos {
-    list-style-type: none;
-    padding: 0;
+#calendario {
+    margin-top: 20px;
+}
+
+#tabela-calendario {
     width: 100%;
+    border-collapse: collapse;
 }
 
-#lista-agendamentos li {
-    background-color: var(--background-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#tabela-calendario th, #tabela-calendario td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
 }
 
-#lista-agendamentos li button {
-    background-color: var(--accent-color);
-    border: none;
-    border-radius: 5px;
+#tabela-calendario th {
+    background-color: #4CAF50;
     color: white;
+}
+
+#tabela-calendario tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tabela-calendario tr:hover {
+    background-color: #ddd;
+}
+
+#tabela-calendario button {
+    background-color: red;
+    color: white;
+    border: none;
     padding: 5px 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#lista-agendamentos li button:hover {
-    background-color: var(--primary-color);
-}
-
-/* Estilos adicionais para a aparência */
-h2 {
-    color: var(--primary-color);
-    text-align: center;
-}
-
-.container h2 {
-    margin-top: 0;
-}
-
-.team-member {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.team-member img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 3px solid var(--primary-color);
+#tabela-calendario button:hover {
+    background-color: darkred;
 }
 
 footer {
-    background-color: var(--header-footer-color);
+    background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 1em 0;
     position: fixed;
-    bottom: 0;
     width: 100%;
+    bottom: 0;
 }
 
-.footer-content {
+footer .footer-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.footer-content p {
-    margin: 0;
-}
-
-.footer-content a {
+footer .footer-content a {
     color: white;
     text-decoration: none;
-    margin-left: 10px;
+    margin: 0 10px;
 }
 
-.footer-content a:hover {
+footer .footer-content a:hover {
     text-decoration: underline;
 }

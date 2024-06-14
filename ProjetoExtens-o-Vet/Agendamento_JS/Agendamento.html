@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Veterinária</title>
+    <title>Clínica Veterinária - Agendamento</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
@@ -13,31 +13,9 @@
 
     <nav>
         <ul>
-            <li><a href="#servicos">Serviços</a></li>
             <li><a href="#agendamento">Agendamento</a></li>
-            <li><a href="#equipe">Equipe</a></li>
-            <li><a href="#contato">Contato</a></li>
-            <li><a href="#informacoes-legais">Informações Legais</a></li>
         </ul>
     </nav>
-
-    <div class="container" id="servicos">
-        <h2>Serviços Oferecidos</h2>
-        <ul>
-            <li>Consulta - Simples Eletiva</li>
-            <li>Ultrassom</li>
-            <li>Raio X</li>
-            <li>Vacinação</li>
-            <li>Cirurgias</li>
-            <li>Exames Hematológicos</li>
-        </ul>
-        <p>Horários de atendimento: Segunda a sexta das 14:00 às 18:00</p>
-        <p>Cirurgias normalmente a cada 15 dias nas segundas e terças</p>
-        <p>Consultas costumam durar 1 hora</p>
-        <p>Consultas feitas presencialmente</p>
-        <p>Agendamento por WhatsApp</p>
-        <p>Feriados não realizam agendamentos</p>
-    </div>
 
     <div class="container" id="agendamento">
         <h2>Solicitação de Agendamento</h2>
@@ -57,8 +35,11 @@
             <label for="idade">Idade:</label>
             <input type="number" id="idade" required>
 
-            <label for="peso">Peso:</label>
-            <input type="number" id="peso" required>
+            <label for="porte">Porte do Pet:</label>
+            <select id="porte">
+                <option value="Pequeno">Pequeno</option>
+                <option value="Grande">Grande</option>
+            </select>
 
             <div class="dataForm">
                 <label for="data">Data:</label>
@@ -83,35 +64,29 @@
         </form>
 
         <h2>Agendamentos</h2>
-        <ul id="lista-agendamentos"></ul>
-    </div>
-
-    <div class="container" id="equipe">
-        <h2>Nossa Equipe</h2>
-        <div class="team-member">
-            <img src="equipe1.jpg" alt="Nome do Veterinário">
-            <p>Dr. Nome do Veterinário</p>
-            <p>CRM: 12345</p>
-            <p>Especialidade: Clínica Geral</p>
+        <div id="calendario">
+            <table id="tabela-calendario">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Tutor</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Pet</th>
+                        <th>Porte</th>
+                        <th>Tipo de Atendimento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-agendamentos">
+                </tbody>
+            </table>
         </div>
-        <div class="team-member">
-            <img src="equipe2.jpg" alt="Nome do Veterinário">
-            <p>Dra. Nome da Veterinária</p>
-            <p>CRM: 67890</p>
-            <p>Especialidade: Cirurgia</p>
-        </div>
-    </div>
-
-    <div class="container" id="informacoes-legais">
-        <h2>Informações Legais e Legislativas</h2>
-        <p>A prática veterinária está sujeita a regulamentações específicas que visam garantir o bem-estar animal e a segurança dos procedimentos realizados. Nossa clínica segue rigorosamente todas as normas estabelecidas pelos órgãos competentes.</p>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <p>Clínica Veterinária - Todos os direitos reservados</p>
-            <p>Contato: <a href="mailto:contato@clinicaveterinaria.com">contato@clinicaveterinaria.com</a> | WhatsApp: (XX) XXXXX-XXXX</p>
-        </div>
+        
     </footer>
 
     <script src="seu_script.js"></script>

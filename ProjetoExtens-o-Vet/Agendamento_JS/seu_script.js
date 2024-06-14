@@ -13,14 +13,14 @@ function salvarAgendamentos(agendamentos) {
 }
 
 // Função para criar um novo agendamento
-function criarAgendamento(tutor, telefone, email, pet, idade, peso, data, horario, tipoAtendimento, status) {
+function criarAgendamento(tutor, telefone, email, pet, idade, porte, data, horario, tipoAtendimento, status) {
     return {
         tutor: tutor,
         telefone: telefone,
         email: email,
         pet: pet,
         idade: idade,
-        peso: peso,
+        porte: porte,
         data: data,
         horario: horario,
         tipoAtendimento: tipoAtendimento,
@@ -59,14 +59,20 @@ function exibirAgendamentos() {
 
     var agenda = carregarAgendamentos();
     agenda.forEach(function(agendamento, index) {
-        var itemLista = document.createElement('li');
-        itemLista.textContent = `Tutor: ${agendamento.tutor}, Telefone: ${agendamento.telefone}, Email: ${agendamento.email}, Pet: ${agendamento.pet}, Idade: ${agendamento.idade}, Peso: ${agendamento.peso}, Data: ${agendamento.data}, Horário: ${agendamento.horario}, Tipo de Atendimento: ${agendamento.tipoAtendimento}, Status: ${agendamento.status}`;
-        var botaoCancelar = document.createElement('button');
-        botaoCancelar.textContent = 'Cancelar';
-        botaoCancelar.addEventListener('click', function() {
-            cancelarAgendamento(index);
-        });
-        itemLista.appendChild(botaoCancelar);
+        var itemLista = document.createElement('tr');
+        itemLista.innerHTML = `
+            <td>${agendamento.data}</td>
+            <td>${agendamento.horario}</td>
+            <td>${agendamento.tutor}</td>
+            <td>${agendamento.telefone}</td>
+            <td>${agendamento.email}</td>
+            <td>${agendamento.pet}</td>
+            <td>${agendamento.porte}</td>
+            <td>${agendamento.tipoAtendimento}</td>
+            <td>
+                <button onclick="cancelarAgendamento(${index})">Cancelar</button>
+            </td>
+        `;
         listaAgendamentos.appendChild(itemLista);
     });
 }
@@ -88,28 +94,26 @@ function enviarMensagemWhatsApp(agendamento) {
     \nDetalhes do Pet:
     \nNome: ${agendamento.pet}
     \nIdade: ${agendamento.idade} anos
-    \nPeso: ${agendamento.peso} kg`;
+    \nPorte: ${agendamento.porte}`;
     var url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank');
 }
 
-// Evento de clique no botão de adicionar agendamento
+// Evento de clique para adicionar um agendamento
 document.getElementById('adicionarAgendamento').addEventListener('click', function() {
     var tutor = document.getElementById('tutor').value;
     var telefone = document.getElementById('telefone').value;
     var email = document.getElementById('email').value;
     var pet = document.getElementById('pet').value;
     var idade = document.getElementById('idade').value;
-    var peso = document.getElementById('peso').value;
+    var porte = document.getElementById('porte').value;
     var data = document.getElementById('data').value;
     var horario = document.getElementById('horario').value;
     var tipoAtendimento = document.getElementById('tipoAtendimento').value;
 
-    var novoAgendamento = criarAgendamento(tutor, telefone, email, pet, idade, peso, data, horario, tipoAtendimento, 'Agendado');
+    var novoAgendamento = criarAgendamento(tutor, telefone, email, pet, idade, porte, data, horario, tipoAtendimento, 'Agendado');
     adicionarAgendamento(novoAgendamento);
 });
 
 // Exibir agendamentos ao carregar a página
-window.onload = function() {
-    exibirAgendamentos();
-};
+exibirAgendamentos();
